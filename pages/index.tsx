@@ -1,7 +1,7 @@
 import rangeMap from '@lib/range-map'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero } from '@components/ui'
+import { Grid, Marquee, Hero, Container } from '@components/ui'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
@@ -69,7 +69,7 @@ export async function getStaticProps({
       brands,
       pages,
     },
-    revalidate: 14400,
+    revalidate: 60,
   }
 }
 
@@ -83,7 +83,7 @@ export default function Home({
   newestProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div>
+    <Container>
       <Grid>
         {featured.slice(0, 3).map(({ node }, i) => (
           <ProductCard
@@ -145,7 +145,7 @@ export default function Home({
         brands={brands}
         newestProducts={newestProducts}
       />
-    </div>
+    </Container>
   )
 }
 

@@ -26,28 +26,27 @@ const Navbar: FC = () => {
   return (
     <div className={cn(s.root, { 'shadow-magical': hasScrolled })}>
       <Container>
+        <div className="bg-gray-200 py-2 px-6 font-medium uppercase tracking-wide">
+          Sale | Up To 50% Off Select Full-priced Styles
+        </div>
         <div className="flex justify-between align-center flex-row py-4 md:py-6 relative">
           <div className="flex flex-1 items-center">
-            <Link href="/">
-              <a className={s.logo} aria-label="Logo">
-                <Logo />
-              </a>
-            </Link>
             <nav className="space-x-4 ml-6 hidden lg:block">
               <Link href="/">
-                <a className={s.link}>All</a>
+                <a className={s.link}>Sign In</a>
               </Link>
               <Link href="/search?q=clothes">
-                <a className={s.link}>Clothes</a>
+                <a className={s.link}>Register</a>
               </Link>
               <Link href="/search?q=accessories">
-                <a className={s.link}>Accessories</a>
+                <a className={s.link}>Find a Store</a>
               </Link>
             </nav>
           </div>
-
-          <div className="flex-1 justify-center hidden lg:flex">
-            <Searchbar />
+          <div>
+            <Link href="/">
+              <Logo />
+            </Link>
           </div>
 
           <div className="flex flex-1 justify-end space-x-8">
@@ -55,9 +54,19 @@ const Navbar: FC = () => {
           </div>
         </div>
 
-        <div className="flex pb-4 lg:px-6 lg:hidden">
-          <Searchbar id="mobile-search" />
-        </div>
+        <nav className="hidden lg:flex flex-row space-x-6 justify-center py-4 font-medium tracking-wide uppercase">
+          <a className="cursor-pointer hover:text-gray-600">New Arrivals</a>
+          <a className="cursor-pointer hover:text-gray-600">Holiday</a>
+          <a className="cursor-pointer hover:text-gray-600">Get The Look</a>
+          <a className="cursor-pointer hover:text-gray-600">Clothing</a>
+          <a className="cursor-pointer hover:text-gray-600">
+            Jewlery & Accesories
+          </a>
+          <a className="cursor-pointer hover:text-gray-600">Collections</a>
+          <a className="cursor-pointer hover:text-gray-600">Petites</a>
+          <a className="cursor-pointer hover:text-gray-600">Sale</a>
+          <a className="cursor-pointer hover:text-gray-600">Search</a>
+        </nav>
       </Container>
     </div>
   )
