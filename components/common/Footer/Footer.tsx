@@ -22,16 +22,15 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(className)
 
   return (
-    <footer className={rootClassName}>
+    <footer className={cn(className, 'border-gray-200 border-t')}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
             <Link href="/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-gray-700 mr-2">
-                  <Logo />
+                <span className="mr-2">
+                  <Logo width="100px" />
                 </span>
-                <span>ACME</span>
               </a>
             </Link>
           </div>

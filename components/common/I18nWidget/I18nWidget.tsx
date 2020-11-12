@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import cn from 'classnames'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { FC, useState } from 'react'
+import { useRouter } from 'next/router'
 import s from './I18nWidget.module.css'
 
 interface LOCALE_DATA {
@@ -30,6 +30,7 @@ const LOCALES_MAP: Record<string, LOCALE_DATA> = {
 }
 
 const I18nWidget: FC = () => {
+  const [display, setDisplay] = useState(false)
   const {
     locale,
     locales,
@@ -37,46 +38,48 @@ const I18nWidget: FC = () => {
     asPath: currentPath,
   } = useRouter()
   const options = locales?.filter((val) => val !== locale)
-
   const currentLocale = locale || defaultLocale
 
   return (
     <nav className={s.root}>
-      <button className={s.button} aria-label="Language selector" />
-      <img
-        className="block mr-2 w-5"
-        src={`/${LOCALES_MAP[currentLocale].img.filename}`}
-        alt={LOCALES_MAP[currentLocale].img.alt}
-      />
-      {options && (
-        <span>
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            fill="none"
-            shape-rendering="geometricPrecision"
-          >
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </span>
-      )}
-
-      {options?.length ? (
-        <ul className={s.dropdownMenu}>
-          {options.map((locale) => (
-            <li key={locale}>
-              <Link href={currentPath} locale={locale}>
-                <a className={cn(s.item)}>{LOCALES_MAP[locale].name}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <div className="flex items-center relative">
+        <button className={s.button} aria-label="Language selector" />
+        <img
+          className="block mr-2 w-5"
+          src={`/${LOCALES_MAP[currentLocale].img.filename}`}
+          alt={LOCALES_MAP[currentLocale].img.alt}
+        />
+        {options && (
+          <span className="cursor-pointer" onClick={() => setDisplay(!display)}>
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              shape-rendering="geometricPrecision"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
+        )}
+      </div>
+      <div className="absolute top-0 right-0 bg-red">
+        {options?.length && display ? (
+          <ul className={s.dropdownMenu}>
+            {options.map((locale) => (
+              <li key={locale}>
+                <Link href={currentPath} locale={locale}>
+                  <a className={cn(s.item)}>{LOCALES_MAP[locale].name}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </nav>
   )
 }

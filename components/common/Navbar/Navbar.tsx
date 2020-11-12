@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import s from './Navbar.module.css'
 import { Logo, Container } from '@components/ui'
-import { Searchbar, UserNav, I18nWidget } from '@components/common'
+import { UserNav, I18nWidget } from '@components/common'
 import cn from 'classnames'
 import throttle from 'lodash.throttle'
 
@@ -76,7 +76,7 @@ const Navbar: FC = () => {
 
       <div className="py-4 border-b border-gray-300">
         <Container>
-          <nav className="hidden lg:flex flex-row space-x-6 justify-center font-semibold tracking-widest text-sm uppercase">
+          <nav className="hidden lg:flex flex-row space-x-6 items-center justify-center font-semibold tracking-widest text-sm uppercase">
             <a className="cursor-pointer hover:text-gray-600">New Arrivals</a>
             <a className="cursor-pointer hover:text-gray-600">Holiday</a>
             <a className="cursor-pointer hover:text-gray-600">Get The Look</a>
@@ -88,6 +88,7 @@ const Navbar: FC = () => {
             <a className="cursor-pointer hover:text-gray-600">Petites</a>
             <a className="cursor-pointer hover:text-gray-600">Sale</a>
             <a className="cursor-pointer hover:text-gray-600">Search</a>
+            <UserNav />
           </nav>
         </Container>
       </div>

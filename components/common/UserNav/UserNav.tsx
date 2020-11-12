@@ -20,9 +20,9 @@ const countItems = (count: number, items: any[]) =>
 const UserNav: FC<Props> = ({ className, children, ...props }) => {
   const { data } = useCart()
   const { data: customer } = useCustomer()
-
   const { toggleSidebar, closeSidebarIfPresent, openModal } = useUI()
   const itemsCount = Object.values(data?.line_items ?? {}).reduce(countItems, 0)
+
   return (
     <nav className={cn(s.root, className)}>
       <div className={s.mainContainer}>
