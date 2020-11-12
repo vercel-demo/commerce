@@ -82,27 +82,7 @@ export default function Home({
   categories,
   newestProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Container>
-      <Grid>
-        {featured.map(({ node }, i) => (
-          <ProductCard
-            key={node.path}
-            product={node}
-            imgWidth={i === 0 ? 1080 : 540}
-            imgHeight={i === 0 ? 1080 : 540}
-            imgPriority
-            imgLoading="eager"
-          />
-        ))}
-      </Grid>
-      <HomeAllProductsGrid
-        categories={categories}
-        brands={brands}
-        newestProducts={newestProducts}
-      />
-    </Container>
-  )
+  return <Container>HOLLA</Container>
 }
 
 Home.Layout = Layout
