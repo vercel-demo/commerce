@@ -12,8 +12,9 @@ const Head: FC = () => {
         <link rel="manifest" href="/site.webmanifest" key="site-manifest" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
+          rel="preload"
+          as="style"
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-          rel="stylesheet"
         />
       </NextHead>
     </>
