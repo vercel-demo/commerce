@@ -2,8 +2,6 @@ import { FC } from 'react'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { Menu } from '@headlessui/react'
-import { DoubleChevron } from '@components/icons'
 import s from './I18nWidget.module.css'
 
 interface LOCALE_DATA {
@@ -44,49 +42,41 @@ const I18nWidget: FC = () => {
 
   return (
     <nav className={s.root}>
-      <Menu>
-        <Menu.Button className={s.button} aria-label="Language selector">
-          <img
-            className="block mr-2 w-5"
-            src={`/${LOCALES_MAP[currentLocale].img.filename}`}
-            alt={LOCALES_MAP[currentLocale].img.alt}
-          />
-          {/* <span className="mr-2">{LOCALES_MAP[currentLocale].name}</span> */}
-          {options && (
-            <span>
-              <svg
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                fill="none"
-                shape-rendering="geometricPrecision"
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </span>
-          )}
-        </Menu.Button>
+      <button className={s.button} aria-label="Language selector" />
+      <img
+        className="block mr-2 w-5"
+        src={`/${LOCALES_MAP[currentLocale].img.filename}`}
+        alt={LOCALES_MAP[currentLocale].img.alt}
+      />
+      {options && (
+        <span>
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+            shape-rendering="geometricPrecision"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
+      )}
 
-        {options?.length ? (
-          <Menu.Items className={s.dropdownMenu}>
-            {options.map((locale) => (
-              <Menu.Item key={locale}>
-                {({ active }) => (
-                  <Link href={currentPath} locale={locale}>
-                    <a className={cn(s.item, { [s.active]: active })}>
-                      {LOCALES_MAP[locale].name}
-                    </a>
-                  </Link>
-                )}
-              </Menu.Item>
-            ))}
-          </Menu.Items>
-        ) : null}
-      </Menu>
+      {options?.length ? (
+        <ul className={s.dropdownMenu}>
+          {options.map((locale) => (
+            <li key={locale}>
+              <Link href={currentPath} locale={locale}>
+                <a className={cn(s.item)}>{LOCALES_MAP[locale].name}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </nav>
   )
 }

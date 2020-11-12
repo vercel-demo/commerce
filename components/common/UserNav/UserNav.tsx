@@ -3,7 +3,6 @@ import Link from 'next/link'
 import cn from 'classnames'
 import useCart from '@bigcommerce/storefront-data-hooks/cart/use-cart'
 import useCustomer from '@bigcommerce/storefront-data-hooks/use-customer'
-import { Menu } from '@headlessui/react'
 import { Heart, Bag } from '@components/icons'
 import { Avatar } from '@components/common'
 import { useUI } from '@components/ui/context'
@@ -41,16 +40,12 @@ const UserNav: FC<Props> = ({ className, children, ...props }) => {
           </li>
           <li className={s.item}>
             {customer ? (
-              <Menu>
-                {({ open }) => (
-                  <>
-                    <Menu.Button className={s.avatarButton} aria-label="Menu">
-                      <Avatar />
-                    </Menu.Button>
-                    <DropdownMenu open={open} />
-                  </>
-                )}
-              </Menu>
+              <ul>
+                <button className={s.avatarButton} aria-label="Menu">
+                  <Avatar />
+                </button>
+                <DropdownMenu />
+              </ul>
             ) : (
               <button
                 className={s.avatarButton}

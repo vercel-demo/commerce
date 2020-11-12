@@ -3,7 +3,6 @@ import { FC, useRef, useEffect, useCallback } from 'react'
 import s from './Toast.module.css'
 import { useDialog } from '@react-aria/dialog'
 import { FocusScope } from '@react-aria/focus'
-import { Transition } from '@headlessui/react'
 import { useOverlay, useModal, OverlayContainer } from '@react-aria/overlays'
 
 interface Props {
@@ -41,32 +40,23 @@ const Toast: FC<Props> = ({
   // })
 
   return (
-    <Transition show={open}>
+    open && (
       <OverlayContainer>
         <FocusScope contain restoreFocus autoFocus>
           <div className={rootClassName}>
-            <Transition.Child
-              enter="transition-opacity ease-linear duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
+            <div
+              className={s.toast}
+              {...overlayProps}
+              {...dialogProps}
+              {...modalProps}
+              ref={ref}
             >
-              <div
-                className={s.toast}
-                {...overlayProps}
-                {...dialogProps}
-                {...modalProps}
-                ref={ref}
-              >
-                {children}
-              </div>
-            </Transition.Child>
+              {children}
+            </div>
           </div>
         </FocusScope>
       </OverlayContainer>
-    </Transition>
+    )
   )
 }
 
