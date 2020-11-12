@@ -89,8 +89,8 @@ export default function Home({
           <ProductCard
             key={node.path}
             product={node}
-            imgWidth={i === 0 ? 1080 : 540}
-            imgHeight={i === 0 ? 1080 : 540}
+            imgWidth={i === 0 ? 789 : 394}
+            imgHeight={i === 0 ? 789 : 394}
             imgPriority
             imgLoading="eager"
           />
