@@ -89,10 +89,10 @@ export default function Home({
           <ProductCard
             key={node.path}
             product={node}
-            imgWidth={i === 0 ? 745 : 373}
-            imgHeight={i === 0 ? 745 : 373}
-            imgPriority
-            imgLoading="eager"
+            imgWidth={i === 0 || i === 4 ? 745 : 373}
+            imgHeight={i === 0 || i === 4 ? 745 : 373}
+            imgLayout="responsive"
+            imgPriority={i > 3}
           />
         ))}
       </Grid>

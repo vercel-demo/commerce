@@ -25,9 +25,8 @@ const ProductCard: FC<Props> = ({
   variant,
   imgWidth,
   imgHeight,
-  imgPriority,
+  imgPriority = false,
   imgLoading,
-  imgSizes,
   imgLayout = 'responsive',
 }) => {
   const src = p.images.edges?.[0]?.node?.urlOriginal!
@@ -79,15 +78,13 @@ const ProductCard: FC<Props> = ({
             </div>
             <div className={s.imageContainer}>
               <Image
-                quality="85"
+                quality="75"
                 src={src}
                 alt={p.name}
                 className={s.image}
                 width={imgWidth}
-                sizes={imgSizes}
                 height={imgHeight}
                 layout={imgLayout}
-                loading={imgLoading}
                 priority={imgPriority}
               />
             </div>
