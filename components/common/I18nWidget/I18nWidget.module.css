@@ -3,7 +3,7 @@
 }
 
 .button {
-  @apply h-10 px-2 rounded-md border border-accents-2 flex items-center justify-center;
+  @apply h-10 px-2 rounded-md flex items-center justify-center;
 }
 
 .button:focus {
