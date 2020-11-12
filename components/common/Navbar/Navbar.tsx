@@ -26,15 +26,15 @@ const Navbar: FC = () => {
   return (
     <div className={cn(s.root, { 'shadow-magical': hasScrolled })}>
       <Container>
-        <div className="flex items-center bg-gray-200 py-2 px-6">
+        <div className="flex items-center bg-accents-3 py-2 px-6">
           <div className="mr-2">
             <svg
               viewBox="0 0 24 24"
               width="20"
               height="20"
               stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
               stroke-linejoin="round"
               fill="none"
               shape-rendering="geometricPrecision"
@@ -51,7 +51,9 @@ const Navbar: FC = () => {
 
           <div>
             <Link href="/">
-              <Logo />
+              <span className="cursor-pointer">
+                <Logo />
+              </span>
             </Link>
           </div>
 

@@ -4,10 +4,10 @@ import cn from 'classnames'
 import useCart from '@bigcommerce/storefront-data-hooks/cart/use-cart'
 import useCustomer from '@bigcommerce/storefront-data-hooks/use-customer'
 import { Heart, Bag } from '@components/icons'
-import { Avatar } from '@components/common'
 import { useUI } from '@components/ui/context'
 import DropdownMenu from './DropdownMenu'
 import s from './UserNav.module.css'
+import { Avatar } from '@components/common'
 
 interface Props {
   className?: string
@@ -40,12 +40,7 @@ const UserNav: FC<Props> = ({ className, children, ...props }) => {
           </li>
           <li className={s.item}>
             {customer ? (
-              <ul>
-                <button className={s.avatarButton} aria-label="Menu">
-                  <Avatar />
-                </button>
-                <DropdownMenu />
-              </ul>
+              <DropdownMenu />
             ) : (
               <button
                 className={s.avatarButton}

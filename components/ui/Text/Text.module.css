@@ -1,5 +1,5 @@
 .body {
-  @apply text-lg leading-7 font-medium max-w-6xl mx-auto;
+  @apply leading-7 font-medium max-w-6xl mx-auto;
 }
 
 .heading {

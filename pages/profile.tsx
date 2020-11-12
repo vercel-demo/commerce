@@ -1,9 +1,10 @@
 import type { GetStaticPropsContext } from 'next'
+import { Layout } from '@components/common'
+import { Text } from '@components/ui'
+
 import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
 import getAllPages from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
 import useCustomer from '@bigcommerce/storefront-data-hooks/use-customer'
-import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
 
 export async function getStaticProps({
   preview,
@@ -19,7 +20,7 @@ export async function getStaticProps({
 export default function Profile() {
   const { data } = useCustomer()
   return (
-    <Container>
+    <div className="mt-3 mb-20">
       <Text variant="pageHeading">My Profile</Text>
       {data && (
         <div className="grid lg:grid-cols-12">
@@ -37,7 +38,7 @@ export default function Profile() {
           </div>
         </div>
       )}
-    </Container>
+    </div>
   )
 }
 

@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import s from './Layout.module.css'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
+import { Container } from '@components/ui'
 import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/common'
 import { usePreventScroll } from '@react-aria/overlays'
@@ -64,7 +65,9 @@ const Layout: FC<Props> = ({ children, pageProps }) => {
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar />
-        <main className="fit">{children}</main>
+        <main className="fit">
+          <Container>{children}</Container>
+        </main>
         <Footer pages={pageProps.pages} />
 
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
