@@ -28,6 +28,7 @@ const ProductCard: FC<Props> = ({
   imgPriority = false,
   imgLoading,
   imgLayout = 'responsive',
+  imgSizes,
 }) => {
   const src = p.images.edges?.[0]?.node?.urlOriginal!
   const { price } = usePrice({
