@@ -1,6 +1,11 @@
 import s from './Sidebar.module.css'
 import Portal from '@reach/portal'
-import { FC, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 
 interface Props {
   children: any
@@ -9,10 +14,25 @@ interface Props {
 }
 
 const Sidebar: FC<Props> = ({ children, open = false, onClose }) => {
+  const ref = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  useEffect(() => {
+    if (ref.current) {
+      if (open) {
+        disableBodyScroll(ref.current)
+      } else {
+        enableBodyScroll(ref.current)
+      }
+    }
+    return () => {
+      clearAllBodyScrollLocks()
+    }
+  }, [open])
+
   return (
     <Portal>
       {open ? (
-        <div className={s.root}>
+        <div className={s.root} ref={ref}>
           <div className="absolute inset-0 overflow-hidden">
             <div
               className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
