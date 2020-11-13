@@ -1,9 +1,8 @@
-import { FC, useRef } from 'react'
-import s from './Modal.module.css'
-import { FocusScope } from '@react-aria/focus'
-import { Cross } from '@components/icons'
-import { useOverlay, OverlayContainer } from '@react-aria/overlays'
+import { FC } from 'react'
 import Portal from '@reach/portal'
+import s from './Modal.module.css'
+import { Cross } from '@components/icons'
+
 interface Props {
   className?: string
   children?: any
@@ -12,36 +11,23 @@ interface Props {
 }
 
 const Modal: FC<Props> = ({ children, open = false, onClose, ...props }) => {
-  let ref = useRef() as React.MutableRefObject<HTMLInputElement>
-  let { overlayProps } = useOverlay(
-    {
-      isOpen: open,
-      isDismissable: false,
-      onClose: onClose,
-      ...props,
-    },
-    ref
-  )
-
   return open ? (
-    <OverlayContainer>
-      <FocusScope contain restoreFocus autoFocus>
-        <div className={s.root}>
-          <div className={s.modal} {...overlayProps} ref={ref}>
-            <div className="h-7 flex items-center justify-end w-full">
-              <button
-                onClick={() => onClose()}
-                aria-label="Close panel"
-                className="hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none"
-              >
-                <Cross className="h-6 w-6" />
-              </button>
-            </div>
-            {children}
+    <Portal>
+      <div className={s.root}>
+        <div className={s.modal}>
+          <div className="h-7 flex items-center justify-end w-full">
+            <button
+              onClick={() => onClose()}
+              aria-label="Close panel"
+              className="hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none"
+            >
+              <Cross className="h-6 w-6" />
+            </button>
           </div>
+          {children}
         </div>
-      </FocusScope>
-    </OverlayContainer>
+      </div>
+    </Portal>
   ) : null
 }
 

@@ -35,9 +35,9 @@ const Navbar: FC = () => {
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               fill="none"
-              shape-rendering="geometricPrecision"
+              shapeRendering="geometricPrecision"
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
