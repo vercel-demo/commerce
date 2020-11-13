@@ -54,8 +54,9 @@ const Head: FC<Props> = ({ categories, brands, newestProducts }) => {
               product={node}
               variant="simple"
               imgProps={{
-                layout: 'fill',
-                sizes: '(max-height: 500px) 999px',
+                layout: 'fixed',
+                width: 380,
+                height: 380,
               }}
             />
           ))}
