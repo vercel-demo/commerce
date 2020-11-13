@@ -53,8 +53,10 @@ const Head: FC<Props> = ({ categories, brands, newestProducts }) => {
               key={node.path}
               product={node}
               variant="simple"
-              imgWidth={480}
-              imgHeight={480}
+              imgProps={{
+                layout: 'fill',
+                sizes: '(max-height: 500px) 999px',
+              }}
             />
           ))}
         </Grid>

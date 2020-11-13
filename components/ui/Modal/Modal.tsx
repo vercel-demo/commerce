@@ -17,7 +17,6 @@ interface Props {
 
 const Modal: FC<Props> = ({ children, open, onClose }) => {
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>
-  console.log(ref, open)
 
   useEffect(() => {
     if (ref.current) {
