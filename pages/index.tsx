@@ -84,7 +84,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container>
-      <Grid>
+      {/* <Grid>
         {featured.map(({ node }, i) => (
           <ProductCard
             key={node.path}
@@ -95,7 +95,7 @@ export default function Home({
             imgPriority={i > 3}
           />
         ))}
-      </Grid>
+      </Grid> */}
       <HomeAllProductsGrid
         categories={categories}
         brands={brands}
