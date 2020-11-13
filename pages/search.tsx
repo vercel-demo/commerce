@@ -173,8 +173,10 @@ export default function Search({
                   key={node.path}
                   className="animated fadeIn"
                   product={node}
-                  imgWidth={480}
-                  imgHeight={480}
+                  imgProps={{
+                    width: 480,
+                    height: 480,
+                  }}
                 />
               ))}
             </Grid>
