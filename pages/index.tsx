@@ -96,11 +96,11 @@ export default function Home({
           />
         ))}
       </Grid> */}
-      <HomeAllProductsGrid
+      {/* <HomeAllProductsGrid
         categories={categories}
         brands={brands}
         newestProducts={newestProducts}
-      />
+      /> */}
     </Container>
   )
 }
