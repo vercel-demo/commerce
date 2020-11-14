@@ -1,12 +1,10 @@
-
-
 const bundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: !!process.env.BUNDLE_ANALYZE
+  enabled: !!process.env.BUNDLE_ANALYZE,
 })
 
 module.exports = bundleAnalyzer({
   images: {
-    domains: ['cdn11.bigcommerce.com'],
+    domains: ['images.contentstack.io', 'cdn11.bigcommerce.com'],
   },
   i18n: {
     locales: ['en-US', 'es'],
@@ -56,4 +54,4 @@ module.exports = bundleAnalyzer({
       },
     ]
   },
-});
+})

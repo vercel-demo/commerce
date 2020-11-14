@@ -4,6 +4,7 @@ import { Grid } from '@components/ui'
 import { ProductCard } from '@components/product'
 import s from './HomeAllProductsGrid.module.css'
 import { getCategoryPath, getDesignerPath } from '@lib/search'
+import Image from 'next/image'
 
 interface Props {
   categories?: any
@@ -47,20 +48,19 @@ const Head: FC<Props> = ({ categories, brands, newestProducts }) => {
         </div>
       </div>
       <div className="flex-1">
-        <Grid layout="normal">
+        <div className="grid md:grid-cols-3 gap-2">
           {newestProducts.map(({ node }: any) => (
-            <ProductCard
-              key={node.path}
-              product={node}
-              variant="simple"
-              imgProps={{
-                layout: 'fixed',
-                width: 380,
-                height: 380,
-              }}
-            />
+            <ProductCard key={node.path} product={node} variant="simple">
+              <Image
+                className="object-cover"
+                src={node.images.edges?.[0]?.node?.urlOriginal!}
+                layout="fixed"
+                width="290"
+                height="290"
+              />
+            </ProductCard>
           ))}
-        </Grid>
+        </div>
       </div>
     </div>
   )

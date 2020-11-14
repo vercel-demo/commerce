@@ -1,8 +1,5 @@
 .root {
-  @apply relative max-h-full w-full box-border overflow-hidden
-  bg-no-repeat bg-center bg-cover transition-transform
-  ease-linear cursor-pointer;
-  height: 100% !important;
+  @apply flex relative overflow-hidden;
 
   &:hover {
     & .squareBg:before {

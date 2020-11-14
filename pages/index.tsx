@@ -1,106 +1,59 @@
-import rangeMap from '@lib/range-map'
+import React from 'react'
+import * as Contentstack from 'contentstack'
+import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { Layout } from '@components/common'
-import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero, Container } from '@components/ui'
-import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { Container, UIComponent } from '@components/ui'
+import { UIComponentEntity } from '@components/ui/UIComponent'
 
-import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
-import getAllProducts from '@bigcommerce/storefront-data-hooks/api/operations/get-all-products'
-import getSiteInfo from '@bigcommerce/storefront-data-hooks/api/operations/get-site-info'
-import getAllPages from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
+interface PageProps {
+  locale: string
+  seo: string
+  blocks: UIComponentEntity[]
+}
 
-export async function getStaticProps({
-  preview,
-  locale,
-}: GetStaticPropsContext) {
-  const config = getConfig({ locale })
+export async function getStaticProps({}: GetStaticPropsContext): Promise<
+  GetStaticPropsResult<PageProps> | undefined
+> {
+  // TODO (BC) Move this to env
+  const Stack = Contentstack.Stack(
+    'blt37e5d9fa4b15e084',
+    'cs03fc78eabffd6082acc28070',
+    'production'
+  )
 
-  // Get Featured Products
-  const { products: featuredProducts } = await getAllProducts({
-    variables: { field: 'featuredProducts', first: 6 },
-    config,
-    preview,
-  })
+  try {
+    // TODO (BC) Move this to lib
+    const query = Stack.ContentType('home_page').Entry('blt5c760b6ce70ae18b')
+    const result = await query.fetch()
+    const { modular_blocks: blocks, seo, locale } = result.toJSON()
 
-  // Get Best Selling Products
-  const { products: bestSellingProducts } = await getAllProducts({
-    variables: { field: 'bestSellingProducts', first: 6 },
-    config,
-    preview,
-  })
-
-  // Get Best Newest Products
-  const { products: newestProducts } = await getAllProducts({
-    variables: { field: 'newestProducts', first: 12 },
-    config,
-    preview,
-  })
-
-  const { categories, brands } = await getSiteInfo({ config, preview })
-  const { pages } = await getAllPages({ config, preview })
-
-  // These are the products that are going to be displayed in the landing.
-  // We prefer to do the computation at buildtime/servertime
-  const { featured, bestSelling } = (() => {
-    // Create a copy of products that we can mutate
-    const products = [...newestProducts]
-    // If the lists of featured and best selling products don't have enough
-    // products, then fill them with products from the products list, this
-    // is useful for new commerce sites that don't have a lot of products
     return {
-      featured: rangeMap(6, (i) => featuredProducts[i] ?? products.shift())
-        .filter(nonNullable)
-        .sort((a, b) => a.node.prices.price.value - b.node.prices.price.value)
-        .reverse(),
-      bestSelling: rangeMap(
-        6,
-        (i) => bestSellingProducts[i] ?? products.shift()
-      ).filter(nonNullable),
+      props: {
+        seo,
+        locale,
+        blocks,
+      },
+      revalidate: 2,
     }
-  })()
-
-  return {
-    props: {
-      featured,
-      bestSelling,
-      newestProducts,
-      categories,
-      brands,
-      pages,
-    },
-    revalidate: 60,
+  } catch (err) {
+    console.error(err)
   }
 }
 
-const nonNullable = (v: any) => v
-
-export default function Home({
-  featured,
-  bestSelling,
-  brands,
-  categories,
-  newestProducts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ seo, locale, blocks }: PageProps) {
+  console.log(seo, locale, blocks)
   return (
     <Container>
-      {/* <Grid>
-        {featured.map(({ node }, i) => (
-          <ProductCard
-            key={node.path}
-            product={node}
-            imgWidth={i === 0 || i === 4 ? 745 : 373}
-            imgHeight={i === 0 || i === 4 ? 745 : 373}
-            imgLayout="responsive"
-            imgPriority={i > 3}
+      {blocks.map(({ component }) => {
+        const { component_type, component_variant, ...rest } = component
+        return (
+          <UIComponent
+            componentType={component_type}
+            componentVariant={component_variant}
+            data={rest}
           />
-        ))}
-      </Grid> */}
-      <HomeAllProductsGrid
-        categories={categories}
-        brands={brands}
-        newestProducts={newestProducts}
-      />
+        )
+      })}
     </Container>
   )
 }

@@ -1,7 +1,6 @@
-import type { FC, ReactText } from 'react'
+import type { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import Image, { ImageProps } from 'next/image'
 import s from './ProductCard.module.css'
 import WishlistButton from '@components/wishlist/WishlistButton'
 
@@ -12,14 +11,13 @@ interface Props {
   className?: string
   product: ProductNode
   variant?: 'slim' | 'simple'
-  imgProps: Omit<ImageProps, 'src'> | any
 }
 
 const ProductCard: FC<Props> = ({
   className,
   product: p,
   variant,
-  imgProps,
+  children,
 }) => {
   const src = p.images.edges?.[0]?.node?.urlOriginal!
 
@@ -48,15 +46,7 @@ const ProductCard: FC<Props> = ({
             variant={p.variants.edges?.[0]!}
           />
         </div>
-        <div className={s.imageContainer}>
-          <Image
-            {...imgProps}
-            quality="75"
-            src={src}
-            alt={p.name}
-            className={s.image}
-          />
-        </div>
+        {children}
       </a>
     </Link>
   )
