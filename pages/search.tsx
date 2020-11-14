@@ -9,6 +9,7 @@ import useSearch from '@bigcommerce/storefront-data-hooks/products/use-search'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Container, Grid, Skeleton } from '@components/ui'
+import Image from 'next/image'
 
 import rangeMap from '@lib/range-map'
 import getSlug from '@lib/get-slug'
@@ -166,22 +167,26 @@ export default function Search({
           )}
 
           {data ? (
-            <Grid layout="normal">
+            <Grid>
               {data.products.map(({ node }) => (
                 <ProductCard
                   variant="simple"
                   key={node.path}
                   className="animated fadeIn"
                   product={node}
-                  imgProps={{
-                    width: 480,
-                    height: 480,
-                  }}
-                />
+                >
+                  <Image
+                    className="object-cover"
+                    src={node.images.edges?.[0]?.node?.urlOriginal!}
+                    layout="fixed"
+                    width="480"
+                    height="480"
+                  />
+                </ProductCard>
               ))}
             </Grid>
           ) : (
-            <Grid layout="normal">
+            <Grid>
               {rangeMap(12, (i) => (
                 <Skeleton
                   key={i}
