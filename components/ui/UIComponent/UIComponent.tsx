@@ -18,6 +18,7 @@ export interface Props {
   componentType: 'hero' | 'grid'
   componentVariant?: string
   data?: any
+  children?: any
 }
 
 const UIComponent: React.FC<Props> = (props) => {
