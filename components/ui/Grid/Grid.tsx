@@ -32,7 +32,7 @@ export interface DataProps {
 interface Props {
   className?: string
   children?: ReactNode[] | Component[] | any[]
-  variant?: 'cols4' | ''
+  variant?: 'cols4' | string
   data?: DataProps
 }
 
