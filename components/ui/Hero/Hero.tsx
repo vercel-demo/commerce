@@ -11,10 +11,9 @@ interface Props {
 const Hero: FC<Props> = ({ data, variant }) => {
 
   if (variant === 'to-r') {
-    console.log(data)
     return (
       <div
-        className="relative grid md:grid-cols-2 justify-center text-center mb-4"
+        className="relative flex flex-col md:flex-row justify-center text-center mb-4"
         style={{ height: '467px' }}
       >
         {data.background_image ? (
@@ -30,8 +29,8 @@ const Hero: FC<Props> = ({ data, variant }) => {
           />
         </div>
         ) : null}
-        <div />
-        <div className="flex flex-col  justify-center spa z-10">
+        <div className="flex-1" />
+        <div className="flex flex-1 flex-col  justify-center spa z-10">
         {data.title && <h2 className="mb-2 text-lg font-medium tracking-wide text-center">{data.title}</h2>}
           {data.description && <div
             className="mb-4 text-center px-24"
@@ -51,7 +50,7 @@ const Hero: FC<Props> = ({ data, variant }) => {
     } : {}
 
     return (
-      <div className="relative bg-red text-center mb-4 p-4 text-white bg-gradient-to-r from-red-dark to-red-light" style={styleProps}>
+      <div className="py-4 relative bg-red text-center mb-4 text-white bg-gradient-to-r from-red-dark to-red-light" style={styleProps}>
       {data.background_image ? (
         <div className="absolute inset-0 overflow-hidden">
           <Image
