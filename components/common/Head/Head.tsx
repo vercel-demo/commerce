@@ -8,15 +8,17 @@ interface Props {
 }
 
 const Head: FC<Props> = ({ seo }) => {
-  const seoNewConfig = {
-    ...defaultSeoConfig,
-    title: seo.title,
-    description: seo.description,
-    titleTemplate: seo.title_template,
-    twitter: {
-      handle: seo.twitter_handle,
-    },
-  }
+  const seoNewConfig = seo
+    ? {
+        ...defaultSeoConfig,
+        title: seo.title,
+        description: seo.description,
+        titleTemplate: seo.title_template,
+        twitter: {
+          handle: seo.twitter_handle,
+        },
+      }
+    : defaultSeoConfig
 
   return (
     <>
