@@ -10,3 +10,15 @@
   margin: 0 auto;
   @apply my-1;
 }
+
+.toR {
+  @apply relative flex flex-col mb-4;
+
+  @screen md {
+    @apply flex-row;
+  }
+
+  & .description {
+    @apply w-72 mb-4 text-center;
+  }
+}

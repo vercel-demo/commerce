@@ -13,7 +13,7 @@ const Hero: FC<Props> = ({ data, variant }) => {
   if (variant === 'to-r') {
     return (
       <div
-        className="relative flex flex-col md:flex-row mb-4"
+        className={s.toR}
         style={{ height: '467px' }}
       >
         {data.background_image ? (
@@ -33,7 +33,7 @@ const Hero: FC<Props> = ({ data, variant }) => {
         <div className="flex flex-1 flex-col items-center justify-center z-10">
           {data.title && <h2 className="mb-2 text-lg font-medium tracking-wide text-center">{data.title}</h2>}
           <div
-            className={cn(s.description, ' w-72 mb-4 text-center')}
+            className={cn(s.description)}
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
           {data.link && <a className="uppercase font-semibold tracking-wide underline text-sm">
