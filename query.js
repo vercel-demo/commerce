@@ -1,8 +1,8 @@
 const Contentstack = require('contentstack')
 
 const Stack = Contentstack.Stack(
-  'blt37e5d9fa4b15e084',
-  'cs03fc78eabffd6082acc28070',
+  'API KEY',
+  'ACCESS TOKEN',
   'production'
 )
 

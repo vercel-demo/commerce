@@ -14,15 +14,13 @@ interface PageProps {
 export async function getStaticProps({}: GetStaticPropsContext): Promise<
   GetStaticPropsResult<PageProps> | undefined
 > {
-  // TODO (BC) Move this to env
-  const Stack = Contentstack.Stack(
-    'blt37e5d9fa4b15e084',
-    'cs03fc78eabffd6082acc28070',
-    'production'
-  )
-
   try {
-    // TODO (BC) Move this to lib
+    const Stack = Contentstack.Stack(
+      process.env.CONTENTSTACK_API_KEY as string,
+      process.env.CONTENTSTACK_ACCESS_TOKEN as string,
+      process.env.NODE_ENV
+    )
+
     const query = Stack.ContentType('home_page').Entry('blt5c760b6ce70ae18b')
     const result = await query.fetch()
     const { modular_blocks: blocks, seo, locale } = result.toJSON()
@@ -33,7 +31,7 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<
         locale,
         blocks,
       },
-      revalidate: 2,
+      revalidate: 1,
     }
   } catch (err) {
     console.error(err)
@@ -41,7 +39,6 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<
 }
 
 export default function Home({ seo, locale, blocks }: PageProps) {
-  console.log(seo, locale, blocks)
   return (
     <Container>
       {blocks.map(({ component }) => {

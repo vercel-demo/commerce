@@ -1,0 +1,12 @@
+.description {
+  @apply text-center;
+}
+
+.description > * {
+  @apply text-center;
+}
+
+.description > img {
+  margin: 0 auto;
+  @apply my-1;
+}
