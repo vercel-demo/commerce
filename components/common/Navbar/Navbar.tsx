@@ -6,7 +6,24 @@ import { UserNav, I18nWidget } from '@components/common'
 import cn from 'classnames'
 import throttle from 'lodash.throttle'
 
-const Navbar: FC = () => {
+interface Props {
+  data: HeaderEntity
+}
+
+interface HeaderEntity {
+  links: LinksEntity[]
+}
+
+interface LinksEntity {
+  link: Link
+}
+
+interface Link {
+  title: string
+  url: string
+}
+
+const Navbar: FC<Props> = ({ data }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
 
   const handleScroll = () => {
@@ -79,16 +96,11 @@ const Navbar: FC = () => {
       <div className="py-4 border-b border-gray-300">
         <Container>
           <nav className="hidden lg:flex flex-row space-x-6 items-center justify-center font-semibold tracking-widest text-sm uppercase">
-            <a className="cursor-pointer hover:text-gray-600">New Arrivals</a>
-            <a className="cursor-pointer hover:text-gray-600">Holiday</a>
-            <a className="cursor-pointer hover:text-gray-600">Get The Look</a>
-            <a className="cursor-pointer hover:text-gray-600">Clothing</a>
-            <a className="cursor-pointer hover:text-gray-600">
-              Jewlery & Accesories
-            </a>
-            <a className="cursor-pointer hover:text-gray-600">Collections</a>
-            <a className="cursor-pointer hover:text-gray-600">Petites</a>
-            <a className="cursor-pointer hover:text-gray-600">Sale</a>
+            {data.links.map(({ link }) => (
+              <a className="cursor-pointer hover:text-gray-600" href={link.url}>
+                {link.title}
+              </a>
+            ))}
             <a className="cursor-pointer hover:text-gray-600">Search</a>
             <UserNav />
           </nav>

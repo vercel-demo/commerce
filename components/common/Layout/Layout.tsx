@@ -6,12 +6,10 @@ import React, { FC } from 'react'
 import { Container } from '@components/ui'
 import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/common'
-import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import { CommerceProvider } from '@bigcommerce/storefront-data-hooks'
 import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
 import type { Page } from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
 import { CartSidebarView } from '@components/cart'
-import { enableBodyScroll } from 'body-scroll-lock'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -35,13 +33,19 @@ const ForgotPassword = dynamic(
   () => import('@components/auth/ForgotPassword'),
   dynamicProps
 )
-const FeatureBar = dynamic(
-  () => import('@components/common/FeatureBar'),
-  dynamicProps
-)
+
+interface HeaderEntity {
+  links: Link[]
+}
+
+interface Link {
+  title: string
+  url: string
+}
 
 interface Props {
   pageProps: {
+    header: HeaderEntity
     pages?: Page[]
   }
 }
@@ -54,17 +58,14 @@ const Layout: FC<Props> = ({ children, pageProps }) => {
     closeModal,
     modalView,
   } = useUI()
-  const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
 
-  // usePreventScroll({
-  //   isDisabled: !(displaySidebar || displayModal),
-  // })
+  const { locale = 'en-US' } = useRouter()
+  const { header } = pageProps
 
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
-        <Navbar />
+        <Navbar data={header} />
         <main className="fit">
           <Container>{children}</Container>
         </main>

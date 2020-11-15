@@ -9,6 +9,16 @@ interface PageProps {
   locale: string
   seo: string
   blocks: UIComponentEntity[]
+  header: HeaderEntity[]
+}
+
+interface HeaderEntity {
+  links: Link[]
+}
+
+interface Link {
+  title: string
+  url: string
 }
 
 export async function getStaticProps({}: GetStaticPropsContext): Promise<
@@ -23,13 +33,14 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<
 
     const query = Stack.ContentType('home_page').Entry('blt5c760b6ce70ae18b')
     const result = await query.fetch()
-    const { modular_blocks: blocks, seo, locale } = result.toJSON()
+    const { modular_blocks: blocks, seo, locale, header } = result.toJSON()
 
     return {
       props: {
         seo,
         locale,
         blocks,
+        header,
       },
       revalidate: 1,
     }
