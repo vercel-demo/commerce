@@ -7,7 +7,7 @@ import { Container } from '@components/ui'
 import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/common'
 import { CommerceProvider } from '@bigcommerce/storefront-data-hooks'
-import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
+import { Sidebar, Modal, LoadingDots } from '@components/ui'
 import type { Page } from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
 import { CartSidebarView } from '@components/cart'
 
@@ -34,8 +34,16 @@ const ForgotPassword = dynamic(
   dynamicProps
 )
 
+interface Props {
+  data: HeaderEntity
+}
+
 interface HeaderEntity {
-  links: Link[]
+  links: LinksEntity[]
+}
+
+interface LinksEntity {
+  link: Link
 }
 
 interface Link {
@@ -66,9 +74,11 @@ const Layout: FC<Props> = ({ children, pageProps }) => {
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar data={header} />
+
         <main className="fit">
           <Container>{children}</Container>
         </main>
+
         <Footer pages={pageProps.pages} />
 
         <Sidebar open={displaySidebar} onClose={closeSidebar}>
