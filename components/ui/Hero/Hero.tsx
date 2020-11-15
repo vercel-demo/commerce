@@ -13,7 +13,7 @@ const Hero: FC<Props> = ({ data, variant }) => {
   if (variant === 'to-r') {
     return (
       <div
-        className="relative flex flex-col md:flex-row justify-center text-center mb-4"
+        className="relative flex flex-col md:flex-row mb-4"
         style={{ height: '467px' }}
       >
         {data.background_image ? (
