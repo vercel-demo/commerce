@@ -33,7 +33,7 @@ const Hero: FC<Props> = ({ data, variant }) => {
         <div className="flex flex-1 flex-col items-center justify-center z-10">
           {data.title && <h2 className="mb-2 text-lg font-medium tracking-wide text-center">{data.title}</h2>}
           {data.description && <div
-            className="w-1/2 mb-4 text-center"
+            className={cn(s.description, ' w-72 mb-4 text-center')}
             dangerouslySetInnerHTML={{ __html: data.description }}
           />}
           {data.link && <a className="uppercase font-semibold tracking-wide underline text-sm">
