@@ -3,7 +3,11 @@ import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import defaultSeoConfig from '@config/seo.json'
 
-const Head: FC = ({ pageProps: { seo } }: any) => {
+interface Props {
+  seo: any
+}
+
+const Head: FC<Props> = ({ seo }) => {
   const seoNewConfig = {
     ...defaultSeoConfig,
     title: seo.title,

@@ -11,10 +11,10 @@ const Noop: FC = ({ children }) => <>{children}</>
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const Layout = (Component as any).Layout || Noop
-
+  const { seo } = pageProps
   return (
     <>
-      <Head pageProps={pageProps} />
+      <Head seo={seo} />
       <ManagedUIContext>
         <Layout pageProps={pageProps}>
           <Component {...pageProps} />
