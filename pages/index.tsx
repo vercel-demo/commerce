@@ -4,7 +4,7 @@ import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { Layout } from '@components/common'
 import { Container, UIComponent } from '@components/ui'
 import { UIComponentEntity } from '@components/ui/UIComponent'
-
+import { defatultPageProps } from '@lib/defaults'
 interface PageProps {
   locale: string
   seo: string
@@ -37,6 +37,7 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<
 
     return {
       props: {
+        ...defatultPageProps,
         seo,
         locale,
         blocks,

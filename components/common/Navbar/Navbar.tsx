@@ -23,8 +23,9 @@ interface Link {
   url: string
 }
 
-const Navbar: FC<Props> = ({ data: { links = [] } }) => {
+const Navbar: FC<Props> = ({ data = {} }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
+  console.log(data)
 
   const handleScroll = () => {
     const offset = 0
@@ -96,7 +97,7 @@ const Navbar: FC<Props> = ({ data: { links = [] } }) => {
       <div className="py-4 border-b border-gray-300">
         <Container>
           <nav className="hidden lg:flex flex-row space-x-6 items-center justify-center font-semibold tracking-widest text-sm uppercase">
-            {links.map(({ link }) => (
+            {data.links?.map(({ link }) => (
               <a className="cursor-pointer hover:text-gray-600" href={link.url}>
                 {link.title}
               </a>

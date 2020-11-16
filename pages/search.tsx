@@ -19,6 +19,7 @@ import {
   getDesignerPath,
   useSearchMeta,
 } from '@lib/search'
+import { defatultPageProps } from '@lib/defaults'
 
 export async function getStaticProps({
   preview,
@@ -29,7 +30,7 @@ export async function getStaticProps({
   const { categories, brands } = await getSiteInfo({ config, preview })
 
   return {
-    props: { pages, categories, brands },
+    props: { ...defatultPageProps, pages, categories, brands },
   }
 }
 

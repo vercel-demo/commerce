@@ -8,6 +8,7 @@ import { Button } from '@components/ui'
 import { Bag, Cross, Check } from '@components/icons'
 import { CartItem } from '@components/cart'
 import { Text } from '@components/ui'
+import { defatultPageProps } from '@lib/defaults'
 
 export async function getStaticProps({
   preview,
@@ -15,8 +16,9 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
+
   return {
-    props: { pages },
+    props: { ...defatultPageProps, pages },
   }
 }
 

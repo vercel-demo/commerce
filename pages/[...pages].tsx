@@ -10,6 +10,7 @@ import { Text } from '@components/ui'
 import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
 import getPage from '@bigcommerce/storefront-data-hooks/api/operations/get-page'
 import getAllPages from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
+import { defatultPageProps } from '@lib/defaults'
 
 export async function getStaticProps({
   preview,
@@ -32,10 +33,8 @@ export async function getStaticProps({
     throw new Error(`Page with slug '${slug}' not found`)
   }
 
-  const header = { links: ['New Arrivals'] }
-
   return {
-    props: { pages, page, header },
+    props: { ...defatultPageProps, pages, page },
     revalidate: 60 * 60, // Every hour
   }
 }

@@ -4,7 +4,7 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero, Container } from '@components/ui'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-
+import { defatultPageProps } from '@lib/defaults'
 import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
 import getAllProducts from '@bigcommerce/storefront-data-hooks/api/operations/get-all-products'
 import getSiteInfo from '@bigcommerce/storefront-data-hooks/api/operations/get-site-info'
@@ -62,6 +62,7 @@ export async function getStaticProps({
 
   return {
     props: {
+      ...defatultPageProps,
       featured,
       bestSelling,
       newestProducts,

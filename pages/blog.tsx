@@ -3,6 +3,7 @@ import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
 import getAllPages from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
 import { Layout } from '@components/common'
 import { Container } from '@components/ui'
+import { defatultPageProps } from '@lib/defaults'
 
 export async function getStaticProps({
   preview,
@@ -10,9 +11,9 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
-  const header = { links: ['New Arrivals'] }
+
   return {
-    props: { pages, header },
+    props: { ...defatultPageProps, pages },
   }
 }
 

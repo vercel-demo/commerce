@@ -2,8 +2,9 @@ import type { GetStaticPropsContext } from 'next'
 import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
 import getAllPages from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
+import { Text } from '@components/ui'
 import { Bag } from '@components/icons'
+import { defatultPageProps } from '@lib/defaults'
 
 export async function getStaticProps({
   preview,
@@ -12,7 +13,7 @@ export async function getStaticProps({
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
   return {
-    props: { pages },
+    props: { ...defatultPageProps, pages },
   }
 }
 

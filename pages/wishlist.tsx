@@ -4,8 +4,9 @@ import getAllPages from '@bigcommerce/storefront-data-hooks/api/operations/get-a
 import useWishlist from '@bigcommerce/storefront-data-hooks/wishlist/use-wishlist'
 import { Layout } from '@components/common'
 import { Heart } from '@components/icons'
-import { Container, Text } from '@components/ui'
+import { Text } from '@components/ui'
 import { WishlistCard } from '@components/wishlist'
+import { defatultPageProps } from '@lib/defaults'
 
 export async function getStaticProps({
   preview,
@@ -14,7 +15,7 @@ export async function getStaticProps({
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
   return {
-    props: { pages },
+    props: { ...defatultPageProps, pages },
   }
 }
 

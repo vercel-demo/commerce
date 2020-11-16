@@ -6,8 +6,7 @@ import type {
 import { useRouter } from 'next/router'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
-
-// Data
+import { defatultPageProps } from '@lib/defaults'
 
 import { getConfig } from '@bigcommerce/storefront-data-hooks/api'
 import getProduct from '@bigcommerce/storefront-data-hooks/api/operations/get-product'
@@ -32,10 +31,8 @@ export async function getStaticProps({
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
 
-  const header = { links: ['New Arrivals'] }
-
   return {
-    props: { pages, product, header },
+    props: { ...defatultPageProps, pages, product },
     revalidate: 200,
   }
 }
