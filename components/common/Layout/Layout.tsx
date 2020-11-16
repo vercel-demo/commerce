@@ -1,15 +1,15 @@
 import cn from 'classnames'
+import React, { FC } from 'react'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import s from './Layout.module.css'
-import { useRouter } from 'next/router'
-import React, { FC } from 'react'
-import { Container } from '@components/ui'
 import { useUI } from '@components/ui/context'
-import { Navbar, Footer } from '@components/common'
-import { CommerceProvider } from '@bigcommerce/storefront-data-hooks'
-import { Sidebar, Modal, LoadingDots } from '@components/ui'
-import type { Page } from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
 import { CartSidebarView } from '@components/cart'
+import { Navbar, Footer } from '@components/common'
+import { Sidebar, Modal, LoadingDots, Container } from '@components/ui'
+
+import type { Page } from '@bigcommerce/storefront-data-hooks/api/operations/get-all-pages'
+import { CommerceProvider } from '@bigcommerce/storefront-data-hooks'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">

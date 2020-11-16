@@ -13,7 +13,7 @@ const Head: FC<Props> = ({ seo }) => {
         ...defaultSeoConfig,
         title: seo.title,
         description: seo.description,
-        titleTemplate: seo.title_template,
+        titleTemplate: seo.titleTemplate,
         twitter: {
           handle: seo.twitter_handle,
         },

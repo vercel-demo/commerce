@@ -53,10 +53,11 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<
 export default function Home({ seo, locale, blocks }: PageProps) {
   return (
     <Container>
-      {blocks.map(({ component }) => {
+      {blocks.map(({ component }, i) => {
         const { component_type, component_variant, ...rest } = component
         return (
           <UIComponent
+            key={`${component_type}_${i}`}
             componentType={component_type}
             componentVariant={component_variant}
             data={rest}

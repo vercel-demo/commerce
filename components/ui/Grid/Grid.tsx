@@ -70,8 +70,11 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
           {data.description && <p className="">{data.description}</p>}
         </div>
         <div className={rootClassName}>
-          {grid.map(({ item }) => (
-            <div className="flex flex-col items-center text-center mb-4">
+          {grid.map(({ item }, i) => (
+            <div
+              className="flex flex-col items-center text-center mb-4"
+              key={`${item.img.url}${i}`}
+            >
               <div className="mb-2">
                 <Image
                   alt="img"
