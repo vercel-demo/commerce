@@ -23,11 +23,7 @@ interface Link {
   url: string
 }
 
-const Navbar: FC<Props> = ({
-  data: {
-    links: [],
-  },
-}) => {
+const Navbar: FC<Props> = ({ data: { links = [] } }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
 
   const handleScroll = () => {
