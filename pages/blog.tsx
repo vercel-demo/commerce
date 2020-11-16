@@ -10,8 +10,9 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
+  const header = { links: ['New Arrivals'] }
   return {
-    props: { pages },
+    props: { pages, header },
   }
 }
 
