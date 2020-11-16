@@ -94,7 +94,10 @@ export default function Home({
             Our best-selling quilted jacket chases away the chill in new colors
             and prints, with contrasting details.
           </p>
-          <a className="uppercase font-semibold tracking-wide underline text-sm">
+          <a
+            className="uppercase font-semibold tracking-wide underline text-sm"
+            href="/"
+          >
             Shop Now
           </a>
         </div>
@@ -104,13 +107,19 @@ export default function Home({
           <strong>25% OFF</strong> FULL-PRICED STYLES
         </h2>
         <p className="mb-2">Use Code 84778 | Exclusions Apply</p>
-        <a className="uppercase font-semibold tracking-wide underline text-sm">
+        <a
+          className="uppercase font-semibold tracking-wide underline text-sm"
+          href="/"
+        >
           SHOP NOW | DETAILS
         </a>
       </div>
       <div className="grid grid-cols-4 gap-4">
         <div className="bg-red h-64 flex items-center justify-center">
-          <a className="uppercase font-semibold tracking-wide underline text-sm">
+          <a
+            className="uppercase font-semibold tracking-wide underline text-sm"
+            href="/"
+          >
             TOPS
           </a>
         </div>

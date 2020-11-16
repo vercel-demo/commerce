@@ -37,7 +37,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
           {data.link && (
-            <a className="uppercase font-semibold tracking-wide underline text-sm">
+            <a
+              className="uppercase font-semibold tracking-wide underline text-sm"
+              href={data.link.url}
+            >
               {data.link.title}
             </a>
           )}
@@ -81,7 +84,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             className={cn(s.description, 'mb-2 text-center')}
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
-          <a className="uppercase font-semibold tracking-wide underline text-sm">
+          <a
+            className="uppercase font-semibold tracking-wide underline text-sm"
+            href={data.link.url}
+          >
             {data.link.title}
           </a>
         </div>
@@ -111,7 +117,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           className="mb-2"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
-        <a className="uppercase font-semibold tracking-wide underline text-sm">
+        <a
+          className="uppercase font-semibold tracking-wide underline text-sm"
+          href={data.link.url}
+        >
           {data.link.title}
         </a>
       </div>

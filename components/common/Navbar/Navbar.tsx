@@ -106,7 +106,9 @@ const Navbar: FC<Props> = ({ data = {} }) => {
               </a>
             ))}
 
-            <a className="cursor-pointer hover:text-gray-600">Search</a>
+            <a className="cursor-pointer hover:text-gray-600" href="/">
+              Search
+            </a>
             <UserNav />
           </nav>
         </Container>

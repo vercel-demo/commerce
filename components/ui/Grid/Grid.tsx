@@ -94,7 +94,10 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
                   dangerouslySetInnerHTML={{ __html: item.description }}
                 />
               )}
-              <a className="uppercase font-semibold tracking-wide underline text-sm">
+              <a
+                className="uppercase font-semibold tracking-wide underline text-sm"
+                href={item!.link.url}
+              >
                 {item!.link.title}
               </a>
             </div>
