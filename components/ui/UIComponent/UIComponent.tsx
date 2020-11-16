@@ -21,6 +21,7 @@ export interface Props {
   componentVariant?: string
   data?: any
   children?: any
+  priority?: boolean
 }
 
 const UIComponent: React.FC<Props> = (props) => {

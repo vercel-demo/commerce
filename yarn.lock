@@ -2959,7 +2959,7 @@ next-unused@^0.0.3:
     madge "^3.8.0"
     ts-loader "^7.0.0"
 
-next@^10.0.2-canary.14:
+next@^10.0.2-canary.18:
   version "10.0.2-canary.18"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.2-canary.18.tgz#59910ebb9faf749f9cf8d70a0b40252e506e81de"
   integrity sha512-AzFMN0lf9xofEkXCJMxOClJenoV3aJH8lXmN0sp9TvZRYOkH30Mg5LSkNPXhprQQ7ORsrY69E3Z8eNu2B1GGew==

@@ -61,6 +61,7 @@ export default function Home({ seo, locale, blocks }: PageProps) {
             componentType={component_type}
             componentVariant={component_variant}
             data={rest}
+            priority={i < 3}
           />
         )
       })}

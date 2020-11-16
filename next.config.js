@@ -5,6 +5,7 @@ const bundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = bundleAnalyzer({
   images: {
     domains: ['images.contentstack.io', 'cdn11.bigcommerce.com'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
   },
   i18n: {
     locales: ['en-US', 'es'],
