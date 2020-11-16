@@ -19,14 +19,9 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
               className="object-fill"
               alt="img"
               src={data.background_image.url}
-              width={1120}
-              height={467}
-              layout="responsive"
+              layout="fill"
               quality="75"
               priority={priority}
-              sizes="(max-width: 640px) 240px, (max-width: 750px) 670px,
-               (max-width: 828px) 748px, (max-width: 1080px) 1000px,
-                (max-width: 1200px) 1120px, (max-width: 1920px) 1120px"
             />
           </div>
         ) : null}
@@ -64,15 +59,17 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
         style={styleProps}
       >
         {data.background_image ? (
-          <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="absolute inset-0 overflow-hidden"
+            style={{ height: 220 }}
+          >
             <Image
               className="object-fill"
               alt="img"
               src={data.background_image.url}
-              width={1120}
-              height={220}
-              layout="responsive"
-              priority
+              layout="fill"
+              quality="75"
+              priority={priority}
             />
           </div>
         ) : null}
@@ -103,9 +100,7 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             className="object-cover"
             alt="img"
             src={data.background_image.url}
-            width={1120}
-            height={467}
-            layout="responsive"
+            layout="fill"
             priority
           />
         </div>

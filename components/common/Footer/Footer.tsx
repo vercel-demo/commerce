@@ -19,10 +19,8 @@ const LEGAL_PAGES = ['terms-of-use', 'shipping-returns', 'privacy-policy']
 
 const Footer: FC<Props> = ({ className, pages }) => {
   const { sitePages, legalPages } = usePages(pages)
-  const rootClassName = cn(className)
-
   return (
-    <footer className={cn(className, 'border-gray-200 border-t')}>
+    <footer className={cn(className, 'border-gray-200 border-t px-6 md:px-2')}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
