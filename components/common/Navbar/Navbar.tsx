@@ -93,12 +93,12 @@ const Navbar: FC<Props> = ({ data = {} }) => {
         </div>
       </Container>
 
-      <div className="py-4 border-b border-gray-300">
+      <div className="py-4 border-b border-gray-300 px-4">
         <Container>
           <nav className="hidden lg:flex flex-row space-x-6 items-center justify-center font-semibold tracking-widest text-sm uppercase">
             {data.links?.map(({ link }) => (
               <a
-                className="cursor-pointer hover:text-gray-600"
+                className="cursor-pointer hover:text-gray-600 text-center"
                 href={link.url}
                 key={link.title}
               >
