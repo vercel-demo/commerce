@@ -3,6 +3,7 @@
 
   @screen lg {
     @apply grid-cols-3;
+    overflow: hidden;
   }
 }
 

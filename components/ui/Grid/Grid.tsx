@@ -90,7 +90,7 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
               )}
               {item.description && (
                 <p
-                  className="mb-2"
+                  className="mb-2 px-4"
                   dangerouslySetInnerHTML={{ __html: item.description }}
                 />
               )}
