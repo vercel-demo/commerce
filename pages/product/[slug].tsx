@@ -32,8 +32,10 @@ export async function getStaticProps({
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
 
+  const header = { links: ['New Arrivals'] }
+
   return {
-    props: { pages, product },
+    props: { pages, product, header },
     revalidate: 200,
   }
 }
