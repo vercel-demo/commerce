@@ -26,7 +26,7 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           </div>
         ) : null}
         <div className="flex-1" />
-        <div className="flex flex-1 flex-col items-center justify-center z-10">
+        <div className="flex flex-1 flex-col items-center justify-center z-10 bg-gray-50 md:bg-transparent p-6 m-6 md:p-0 md:m-0">
           {data.title && (
             <h2 className="mb-2 text-lg font-medium tracking-wide text-center">
               {data.title}
@@ -58,7 +58,7 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
 
     return (
       <div
-        className="py-4 relative bg-red text-center mb-4 text-white bg-gradient-to-r from-red-dark to-red-light"
+        className="py-4 relative text-center mb-4 text-white bg-gradient-to-r from-red-dark to-red-light"
         style={styleProps}
       >
         {data.background_image ? (
@@ -76,7 +76,7 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             />
           </div>
         ) : null}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 text-center my-2 mx-6">
           <h2 className="mb-2 text-lg font-medium tracking-wide">
             {data.title}
           </h2>
@@ -111,7 +111,7 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           />
         </div>
       ) : null}
-      <div className="bg-white p-6 w-96 z-10">
+      <div className="bg-white p-6 m-6 w-96 z-10">
         <h2 className="text-lg uppercase px-12 mb-2">{data.title}</h2>
         <p
           className="mb-2"
