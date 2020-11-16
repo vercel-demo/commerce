@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 import s from './I18nWidget.module.css'
-
+import { Cross } from '@components/icons'
 interface LOCALE_DATA {
   name: string
   img: {
@@ -67,17 +67,30 @@ const I18nWidget: FC = () => {
           </span>
         )}
       </div>
-      <div className="absolute top-0 right-0 bg-red">
+      <div className="absolute top-0 right-0">
         {options?.length && display ? (
-          <ul className={s.dropdownMenu}>
-            {options.map((locale) => (
-              <li key={locale}>
-                <Link href={currentPath} locale={locale}>
-                  <a className={cn(s.item)}>{LOCALES_MAP[locale].name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className={s.dropdownMenu}>
+            <div className="flex flex-row justify-end px-6">
+              <button
+                onClick={() => setDisplay(false)}
+                aria-label="Close panel"
+                className="hover:text-gray-500 transition ease-in-out duration-150 md:hidden"
+              >
+                <Cross className="h-6 w-6" />
+              </button>
+            </div>
+            <ul>
+              {options.map((locale) => (
+                <li key={locale}>
+                  <Link href={currentPath} locale={locale}>
+                    <a className={cn(s.item)} onClick={() => setDisplay(false)}>
+                      {LOCALES_MAP[locale].name}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : null}
       </div>
     </nav>

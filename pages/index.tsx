@@ -21,7 +21,10 @@ interface Link {
   url: string
 }
 
-export async function getStaticProps({}: GetStaticPropsContext): Promise<
+export async function getStaticProps({
+  locale: nextLocale,
+  locales,
+}: GetStaticPropsContext): Promise<
   GetStaticPropsResult<PageProps> | undefined
 > {
   try {
@@ -31,7 +34,10 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<
       process.env.NODE_ENV
     )
 
-    const query = Stack.ContentType('home_page').Entry('blt5c760b6ce70ae18b')
+    const query = Stack.ContentType('home_page')
+      .Entry('blt5c760b6ce70ae18b')
+      .language(nextLocale?.toLocaleLowerCase() as string)
+
     const result = await query.fetch()
     const { modular_blocks: blocks, seo, locale, header } = result.toJSON()
 
