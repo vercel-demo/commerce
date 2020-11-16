@@ -26,3 +26,15 @@
 .item:hover {
   @apply bg-accents-1;
 }
+
+.closeButton {
+  @apply transition ease-in-out duration-150;
+
+  & :hover {
+    @apply text-gray-500;
+  }
+
+  @screen md {
+    @apply hidden;
+  }
+}

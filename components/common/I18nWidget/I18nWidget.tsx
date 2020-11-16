@@ -74,7 +74,7 @@ const I18nWidget: FC = () => {
               <button
                 onClick={() => setDisplay(false)}
                 aria-label="Close panel"
-                className="hover:text-gray-500 transition ease-in-out duration-150 md:hidden"
+                className={s.closeButton}
               >
                 <Cross className="h-6 w-6" />
               </button>
