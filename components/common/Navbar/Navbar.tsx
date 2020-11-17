@@ -92,7 +92,7 @@ const Navbar: FC<Props> = ({ data = {} }) => {
             </span>
           </div>
         </div>
-        <div className="border-t border-b divide-gray-400 divide-x bg-gray-200 grid grid-cols-4 md:hidden text-center uppercase text-sm tracking-widest">
+        <div className={s.mobileNav}>
           <div className="flex flex-col items-center py-3">
             <Menu  width="18"/>
             <span className="mt-1">Menu</span>

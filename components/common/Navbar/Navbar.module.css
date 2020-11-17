@@ -24,3 +24,11 @@
     transform: scale(1.05);
   }
 }
+
+.mobileNav {
+  @apply border-t border-b divide-gray-400 divide-x bg-gray-200 grid grid-cols-4 text-center uppercase text-sm tracking-widest;
+
+  @screen md {
+    @apply hidden;
+  }
+}
