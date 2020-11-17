@@ -5,7 +5,7 @@ import { Logo, Container } from '@components/ui'
 import { UserNav, I18nWidget } from '@components/common'
 import cn from 'classnames'
 import throttle from 'lodash.throttle'
-
+import {Menu, MapPin, Search, Bag} from '@components/icons'
 interface Props {
   data: HeaderEntity
 }
@@ -59,13 +59,14 @@ const Navbar: FC<Props> = ({ data = {} }) => {
               <path d="M6 9l6 6 6-6" />
             </svg>
           </div>
-          <span className="text-base uppercase tracking-wider font-bold">
+          <span className="text-base uppercase tracking-wider font-medium">
             Sale | Up To 50% Off Select Full-priced Styles
           </span>
         </div>
-        <div className="flex justify-between align-center flex-row py-4 md:py-6 relative">
-          <div className="flex flex-1 items-center"></div>
-
+        <div className="flex justify-between items-center flex-row px-2 py-2 md:py-2 relative">
+          <div className="flex flex-1 md:flex">
+            <a className={s.link}>My Chico Closet</a>
+          </div>
           <div>
             <Link href="/">
               <span className="cursor-pointer">
@@ -91,11 +92,30 @@ const Navbar: FC<Props> = ({ data = {} }) => {
             </span>
           </div>
         </div>
+        <div className="border-t border-b divide-gray-400 divide-x bg-gray-200 grid grid-cols-4 md:hidden text-center uppercase text-sm tracking-widest">
+          <div className="flex flex-col items-center py-3">
+            <Menu  width="18"/>
+            <span className="mt-1">Menu</span>
+          </div>
+          <div className="flex flex-col items-center py-3">
+            <MapPin width="18"/>
+            <span className="mt-1">Stores</span>
+            </div>
+          <div className="flex flex-col items-center py-3">
+            <Search  width="18"/>
+            <span className="mt-1">Search</span>
+          </div>
+          <div className="flex flex-col items-center py-3">
+            <Bag width="18"/>
+            <span className="mt-1">Bag</span>
+          </div>
+        </div>
       </Container>
 
-      <div className="py-4 border-b border-gray-300 px-4">
+
+      <div className=" border-b border-gray-300 px-4 md:pb-1">
         <Container>
-          <nav className="hidden lg:flex flex-row space-x-6 items-center justify-center font-semibold tracking-widest text-sm uppercase">
+          <nav className="hidden lg:flex flex-row space-x-8 items-center justify-center font-semibold tracking-widest text-sm uppercase">
             {data.links?.map(({ link }) => (
               <a
                 className="cursor-pointer hover:text-gray-600 text-center"
