@@ -96,7 +96,11 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
                 />
               )}
               <Link
-                href={item!.link.url ? item!.link.url : 'https://chicos.com'}
+                href={
+                  item!.link.url
+                    ? item!.link.url
+                    : 'https://www.chicos.com/store/'
+                }
                 passHref
               >
                 <a className="uppercase font-semibold tracking-wide underline text-sm">

@@ -39,7 +39,9 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           />
           {data.link && (
             <Link
-              href={data.link.url ? data.link.url : 'https://chicos.com'}
+              href={
+                data.link.url ? data.link.url : 'https://www.chicos.com/store/'
+              }
               passHref
             >
               <a className="uppercase font-semibold tracking-wide underline text-sm">
@@ -89,7 +91,9 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           />
 
           <Link
-            href={data.link.url ? data.link.url : 'https://chicos.com'}
+            href={
+              data.link.url ? data.link.url : 'https://www.chicos.com/store/'
+            }
             passHref
           >
             <a className="uppercase font-semibold tracking-wide underline text-sm">
@@ -124,7 +128,7 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
         <Link
-          href={data.link.url ? data.link.url : 'https://chicos.com'}
+          href={data.link.url ? data.link.url : 'https://www.chicos.com/store/'}
           passHref
         >
           <a className="uppercase font-semibold tracking-wide underline text-sm">
