@@ -53,6 +53,10 @@ module.exports = bundleAnalyzer({
         source: '/search/:category',
         destination: '/search',
       },
+      { 
+        "source": "/(.*)", 
+        "destination": "https://chicos.com/$1"
+      }
     ]
   },
 })
