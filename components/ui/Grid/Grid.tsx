@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { FC, ReactNode, Component } from 'react'
 import s from './Grid.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export interface GridEntity {
   grid: GridData
@@ -94,12 +95,13 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
                   dangerouslySetInnerHTML={{ __html: item.description }}
                 />
               )}
-              <a
-                className="uppercase font-semibold tracking-wide underline text-sm"
-                href={item!.link.url}
-              >
-                {item!.link.title}
-              </a>
+              <Link href={item!.link.url} passHref>
+                <a
+                  className="uppercase font-semibold tracking-wide underline text-sm"
+                  >
+                  {item!.link.title}
+                </a>
+              </Link>
             </div>
           ))}
         </div>
