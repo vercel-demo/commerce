@@ -92,7 +92,7 @@ const Navbar: FC<Props> = ({ data = {} }) => {
             </span>
           </div>
         </div>
-        <div className={s.mobileNav}>
+        <div className={cn(s.mobileNav, 'divide-gray-400 divide-x')}>
           <div className="flex flex-col items-center py-3">
             <Menu  width="18"/>
             <span className="mt-1">Menu</span>
