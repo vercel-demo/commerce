@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 import s from './Hero.module.css'
 import cn from 'classnames'
+import Link from 'next/link'
 
 interface Props {
   variant?: 'slim' | 'to-r' | string
@@ -37,12 +38,15 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
           {data.link && (
-            <a
-              className="uppercase font-semibold tracking-wide underline text-sm"
-              href={data.link.url}
-            >
-              {data.link.title}
-            </a>
+            <Link href={data.link.url} passHref>
+              <a
+                className="uppercase font-semibold tracking-wide underline text-sm"
+                
+              >
+                {data.link.title}
+              </a>
+            </Link>
+
           )}
         </div>
       </div>
@@ -84,12 +88,14 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             className={cn(s.description, 'mb-2 text-center')}
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
+
+        <Link href={data.link.url} passHref>
           <a
             className="uppercase font-semibold tracking-wide underline text-sm"
-            href={data.link.url}
-          >
+            >
             {data.link.title}
           </a>
+            </Link>
         </div>
       </div>
     )
@@ -117,12 +123,14 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           className="mb-2"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
+                    <Link href={data.link.url} passHref>
         <a
           className="uppercase font-semibold tracking-wide underline text-sm"
-          href={data.link.url}
-        >
+          
+          >
           {data.link.title}
         </a>
+          </Link>
       </div>
     </div>
   )
