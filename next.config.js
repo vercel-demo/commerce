@@ -53,9 +53,13 @@ module.exports = bundleAnalyzer({
         source: '/search/:category',
         destination: '/search',
       },
-      { 
-        "source": "/(.*)", 
-        "destination": "https://chicos.com/$1"
+      {
+        source: '/:path*',
+        destination: '/:path*'
+      },
+      {
+        source: '/:path*',
+        destination: `https://chicos.com/:path*`
       }
     ]
   },
