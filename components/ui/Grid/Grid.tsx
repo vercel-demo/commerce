@@ -95,7 +95,10 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
                   dangerouslySetInnerHTML={{ __html: item.description }}
                 />
               )}
-              <Link href={item!.link.url} passHref>
+              <Link
+                href={item!.link.url ? item!.link.url : 'https://chicos.com'}
+                passHref
+              >
                 <a className="uppercase font-semibold tracking-wide underline text-sm">
                   {item!.link.title}
                 </a>

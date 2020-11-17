@@ -38,7 +38,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
           {data.link && (
-            <Link href={data.link.url} passHref>
+            <Link
+              href={data.link.url ? data.link.url : 'https://chicos.com'}
+              passHref
+            >
               <a className="uppercase font-semibold tracking-wide underline text-sm">
                 {data.link.title}
               </a>
@@ -85,7 +88,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
 
-          <Link href={data.link.url} passHref>
+          <Link
+            href={data.link.url ? data.link.url : 'https://chicos.com'}
+            passHref
+          >
             <a className="uppercase font-semibold tracking-wide underline text-sm">
               {data.link.title}
             </a>
@@ -117,7 +123,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           className="mb-2"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
-        <Link href={data.link.url} passHref>
+        <Link
+          href={data.link.url ? data.link.url : 'https://chicos.com'}
+          passHref
+        >
           <a className="uppercase font-semibold tracking-wide underline text-sm">
             {data.link.title}
           </a>
