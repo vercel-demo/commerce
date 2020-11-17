@@ -96,9 +96,7 @@ const Grid: FC<Props> = ({ className, children, variant, data = {} }) => {
                 />
               )}
               <Link href={item!.link.url} passHref>
-                <a
-                  className="uppercase font-semibold tracking-wide underline text-sm"
-                  >
+                <a className="uppercase font-semibold tracking-wide underline text-sm">
                   {item!.link.title}
                 </a>
               </Link>

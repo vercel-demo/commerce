@@ -102,28 +102,7 @@ export default function Home({
           </a>
         </div>
       </div>
-      <div className="bg-red text-center my-4 p-6 text-white bg-gradient-to-r from-red-dark to-red-light">
-        <h2 className="mb-2 text-lg font-medium tracking-wide">
-          <strong>25% OFF</strong> FULL-PRICED STYLES
-        </h2>
-        <p className="mb-2">Use Code 84778 | Exclusions Apply</p>
-        <a
-          className="uppercase font-semibold tracking-wide underline text-sm"
-          href="/"
-        >
-          SHOP NOW | DETAILS
-        </a>
-      </div>
-      <div className="grid grid-cols-4 gap-4">
-        <div className="bg-red h-64 flex items-center justify-center">
-          <a
-            className="uppercase font-semibold tracking-wide underline text-sm"
-            href="/"
-          >
-            TOPS
-          </a>
-        </div>
-      </div>
+
       <HomeAllProductsGrid
         categories={categories}
         brands={brands}

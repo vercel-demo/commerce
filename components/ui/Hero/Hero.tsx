@@ -39,14 +39,10 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           />
           {data.link && (
             <Link href={data.link.url} passHref>
-              <a
-                className="uppercase font-semibold tracking-wide underline text-sm"
-                
-              >
+              <a className="uppercase font-semibold tracking-wide underline text-sm">
                 {data.link.title}
               </a>
             </Link>
-
           )}
         </div>
       </div>
@@ -89,13 +85,11 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
 
-        <Link href={data.link.url} passHref>
-          <a
-            className="uppercase font-semibold tracking-wide underline text-sm"
-            >
-            {data.link.title}
-          </a>
-            </Link>
+          <Link href={data.link.url} passHref>
+            <a className="uppercase font-semibold tracking-wide underline text-sm">
+              {data.link.title}
+            </a>
+          </Link>
         </div>
       </div>
     )
@@ -123,14 +117,11 @@ const Hero: FC<Props> = ({ data, variant, priority = false }) => {
           className="mb-2"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
-                    <Link href={data.link.url} passHref>
-        <a
-          className="uppercase font-semibold tracking-wide underline text-sm"
-          
-          >
-          {data.link.title}
-        </a>
-          </Link>
+        <Link href={data.link.url} passHref>
+          <a className="uppercase font-semibold tracking-wide underline text-sm">
+            {data.link.title}
+          </a>
+        </Link>
       </div>
     </div>
   )
